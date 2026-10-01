@@ -1,0 +1,569 @@
+/* =========================================================
+   ONG ESPERANÇA
+   Folha de estilos principal
+   ========================================================= */
+
+
+/* =========================================================
+   1. DESIGN SYSTEM
+   ========================================================= */
+
+:root {
+    /* Cores principais */
+    --cor-primaria: #176B87;
+    --cor-primaria-clara: #64CCC5;
+    --cor-primaria-escura: #053B50;
+
+    /* Cores secundárias */
+    --cor-secundaria: #F4A261;
+    --cor-secundaria-clara: #F8C291;
+
+    /* Cores neutras */
+    --cor-branco: #FFFFFF;
+    --cor-fundo: #F5F7F8;
+    --cor-texto: #1F2933;
+    --cor-borda: #AAB2BD;
+
+    /* Estados */
+    --cor-sucesso: #2E7D32;
+    --cor-erro: #C62828;
+
+    /* Tipografia */
+    --fonte-xs: 0.875rem;
+    --fonte-sm: 1rem;
+    --fonte-md: 1.25rem;
+    --fonte-lg: 1.75rem;
+    --fonte-xl: 2.5rem;
+
+    /* Espaçamentos */
+    --espaco-xs: 0.5rem;
+    --espaco-sm: 1rem;
+    --espaco-md: 1.5rem;
+    --espaco-lg: 2rem;
+    --espaco-xl: 3rem;
+}
+
+
+/* =========================================================
+   2. RESET E CONFIGURAÇÕES GERAIS
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+
+    font-family: Arial, sans-serif;
+    font-size: var(--fonte-sm);
+    line-height: 1.6;
+
+    color: var(--cor-texto);
+    background-color: var(--cor-fundo);
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* =========================================================
+   3. CABEÇALHO
+   ========================================================= */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: var(--espaco-md);
+    padding: var(--espaco-md) var(--espaco-lg);
+
+    background-color: var(--cor-primaria-escura);
+    color: var(--cor-branco);
+}
+
+
+/* =========================================================
+   4. NAVEGAÇÃO
+   ========================================================= */
+
+.menu {
+    position: relative;
+}
+
+.menu-lista {
+    display: flex;
+    align-items: center;
+
+    gap: var(--espaco-md);
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.menu-lista a,
+nav a {
+    color: var(--cor-branco);
+    text-decoration: none;
+}
+
+.menu-lista a:hover {
+    text-decoration: underline;
+}
+
+
+/* ---------- Submenu ---------- */
+
+.tem-submenu {
+    position: relative;
+}
+
+.submenu {
+    display: none;
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    min-width: 180px;
+
+    margin: 0;
+    padding: var(--espaco-sm);
+
+    list-style: none;
+
+    background-color: var(--cor-primaria-escura);
+
+    z-index: 10;
+}
+
+.tem-submenu:hover .submenu,
+.tem-submenu:focus-within .submenu {
+    display: block;
+}
+
+.submenu li {
+    padding: var(--espaco-xs) 0;
+}
+
+
+/* ---------- Menu mobile ---------- */
+
+.menu-toggle {
+    display: none;
+}
+
+.menu-hamburguer {
+    display: none;
+
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   5. CONTEÚDO PRINCIPAL
+   ========================================================= */
+
+/* Grid principal de 12 colunas */
+
+main {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+
+    gap: var(--espaco-md);
+
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+    padding: var(--espaco-lg);
+}
+
+main > section {
+    grid-column: span 12;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: var(--espaco-sm);
+}
+
+
+/* =========================================================
+   6. RODAPÉ
+   ========================================================= */
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: var(--espaco-md);
+
+    background-color: var(--cor-primaria-escura);
+    color: var(--cor-branco);
+}
+
+
+/* =========================================================
+   7. BOTÕES
+   ========================================================= */
+
+button,
+.botao {
+    padding: var(--espaco-xs) var(--espaco-md);
+
+    border: 2px solid var(--cor-primaria);
+    border-radius: 6px;
+
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+
+    font-size: var(--fonte-sm);
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.2s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* Mouse sobre o botão */
+
+button:hover,
+.botao:hover {
+    background-color: var(--cor-primaria-escura);
+    border-color: var(--cor-primaria-escura);
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Navegação por teclado */
+
+button:focus-visible,
+.botao:focus-visible {
+    outline: 3px solid var(--cor-secundaria);
+    outline-offset: 3px;
+}
+
+
+/* Clique */
+
+button:active,
+.botao:active {
+    transform: scale(0.97);
+    box-shadow: none;
+}
+
+
+/* Botão desabilitado */
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   8. FORMULÁRIOS
+   ========================================================= */
+
+input,
+select,
+textarea {
+    padding: var(--espaco-xs);
+
+    border: 2px solid var(--cor-borda);
+    border-radius: 5px;
+
+    font: inherit;
+
+    background-color: var(--cor-branco);
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* Campo selecionado */
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+
+    border-color: var(--cor-primaria);
+
+    box-shadow:
+        0 0 0 3px rgba(23, 107, 135, 0.15);
+}
+
+
+/* ---------- Validação controlada pelo JavaScript ---------- */
+
+/* Campo com erro */
+
+input.campo-erro,
+select.campo-erro,
+textarea.campo-erro {
+    border-color: var(--cor-erro);
+}
+
+
+/* Campo preenchido corretamente */
+
+input.campo-sucesso,
+select.campo-sucesso,
+textarea.campo-sucesso {
+    border-color: var(--cor-sucesso);
+}
+
+
+/* Mantém indicação de erro mesmo quando o campo recebe foco */
+
+input.campo-erro:focus,
+select.campo-erro:focus,
+textarea.campo-erro:focus {
+    border-color: var(--cor-erro);
+
+    box-shadow:
+        0 0 0 3px rgba(198, 40, 40, 0.15);
+}
+
+
+/* Mantém indicação de sucesso durante o foco */
+
+input.campo-sucesso:focus,
+select.campo-sucesso:focus,
+textarea.campo-sucesso:focus {
+    border-color: var(--cor-sucesso);
+
+    box-shadow:
+        0 0 0 3px rgba(46, 125, 50, 0.15);
+}
+
+
+/* =========================================================
+   9. BADGES
+   ========================================================= */
+
+.badge {
+    display: inline-block;
+
+    width: fit-content;
+
+    padding: 0.25rem 0.75rem;
+
+    border-radius: 20px;
+
+    font-size: var(--fonte-xs);
+    font-weight: bold;
+}
+
+.badge-ativo {
+    background-color: #DFF3E4;
+    color: #256D3B;
+}
+
+.badge-doacao {
+    background-color: #FFF0DB;
+    color: #8A4B08;
+}
+
+
+/* =========================================================
+   10. ALERTAS
+   ========================================================= */
+
+.alerta {
+    padding: var(--espaco-sm);
+
+    border-left: 5px solid;
+    border-radius: 6px;
+}
+
+.alerta-info {
+    background-color: #E5F3F8;
+    border-color: var(--cor-primaria);
+
+    color: var(--cor-primaria-escura);
+}
+
+
+/* =========================================================
+   11. TOAST DE CONFIRMAÇÃO
+   ========================================================= */
+
+.toast {
+    position: fixed;
+
+    right: var(--espaco-lg);
+    bottom: var(--espaco-lg);
+
+    display: flex;
+    align-items: center;
+
+    gap: var(--espaco-xs);
+
+    padding: var(--espaco-sm) var(--espaco-md);
+
+    border-radius: 6px;
+
+    background-color: var(--cor-sucesso);
+    color: var(--cor-branco);
+
+    font-weight: bold;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+    /* Escondido por padrão */
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(20px);
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        visibility 0.3s ease;
+
+    z-index: 1000;
+}
+
+
+/* JavaScript adiciona esta classe após cadastro válido */
+
+.toast.mostrar {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   12. RESPONSIVIDADE
+   ========================================================= */
+
+
+/* ---------- Celulares pequenos ---------- */
+
+@media (max-width: 480px) {
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .menu {
+        width: 100%;
+    }
+
+    .menu-hamburguer {
+        display: block;
+    }
+
+    .menu-lista {
+        display: none;
+
+        flex-direction: column;
+        align-items: flex-start;
+
+        width: 100%;
+    }
+
+    .menu-toggle:checked + .menu-hamburguer + .menu-lista {
+        display: flex;
+    }
+
+    .submenu {
+        position: static;
+
+        display: block;
+
+        padding-left: var(--espaco-md);
+    }
+
+    main {
+        padding: var(--espaco-sm);
+        gap: var(--espaco-sm);
+    }
+
+    main > section {
+        grid-column: span 12;
+    }
+
+    .toast {
+        right: var(--espaco-sm);
+        bottom: var(--espaco-sm);
+        left: var(--espaco-sm);
+
+        justify-content: center;
+    }
+}
+
+
+/* ---------- Celulares maiores ---------- */
+
+@media (min-width: 481px) and (max-width: 767px) {
+
+    main {
+        padding: var(--espaco-md);
+    }
+
+    main > section {
+        grid-column: span 12;
+    }
+}
+
+
+/* ---------- Tablets ---------- */
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+    main {
+        padding: var(--espaco-lg);
+    }
+
+    main > section {
+        grid-column: span 12;
+    }
+}
+
+
+/* ---------- Notebooks ---------- */
+
+@media (min-width: 992px) and (max-width: 1199px) {
+
+    main > section {
+        grid-column: span 6;
+    }
+}
+
+
+/* ---------- Desktops grandes ---------- */
+
+@media (min-width: 1200px) {
+
+    main > section {
+        grid-column: span 6;
+    }
+}
